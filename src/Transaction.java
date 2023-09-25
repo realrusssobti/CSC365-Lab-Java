@@ -9,9 +9,9 @@ public class Transaction {
     private int customerID;
     private double amount;
     private String date;
-    private int creditCardNumber;
+    private long creditCardNumber;
     private String vendor;
-    public Transaction(int customerID, double amount, String date, int creditCardNumber, String vendor) {
+    public Transaction(int customerID, double amount, String date, long creditCardNumber, String vendor) {
         this.customerID = customerID;
         this.amount = amount;
         this.date = date;
@@ -27,7 +27,7 @@ public class Transaction {
     public String getDate() {
         return date;
     }
-    public int getCreditCardNumber() {
+    public long getCreditCardNumber() {
         return creditCardNumber;
     }
     public String getVendor() {

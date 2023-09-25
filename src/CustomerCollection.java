@@ -6,10 +6,10 @@ public class CustomerCollection {
      */
     private HashMap<Integer, Customer> customers;
     public CustomerCollection() {
-        customers = new HashMap<Integer, Customer>();
+        customers = new HashMap<>();
     }
     public CustomerCollection(Customer[] customers){
-        this.customers = new HashMap<Integer, Customer>();
+        this.customers = new HashMap<>();
         for (Customer customer : customers) {
             this.customers.put(customer.getID(), customer);
         }
@@ -23,5 +23,22 @@ public class CustomerCollection {
     public void removeCustomer(int ID) {
         customers.remove(ID);
     }
+    public String toString(){
+        // build a string representation of the CustomerCollection
+        StringBuilder string = new StringBuilder();
+        for (Customer customer : customers.values()){
+            string.append(customer.toString()).append("\n");
 
+        }
+        return string.toString();
+    }
+
+    public Customer getCustomerBySSN(int ssn) {
+        for (Customer customer : customers.values()){
+            if (customer.getSSN() == ssn){
+                return customer;
+            }
+        }
+        return null;
+    }
 }

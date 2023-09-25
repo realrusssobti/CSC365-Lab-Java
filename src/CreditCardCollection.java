@@ -2,7 +2,7 @@ import java.util.HashMap;
 
 public class CreditCardCollection {
     /* A collection of CreditCard objects as a HashSet */
-    private HashMap<Integer, CreditCard> creditCards;
+    private HashMap<Long, CreditCard> creditCards;
     public CreditCardCollection() {
         creditCards = new HashMap();
     }
@@ -15,7 +15,7 @@ public class CreditCardCollection {
     public void addCreditCard(CreditCard creditCard) {
         creditCards.put(creditCard.getNumber(), creditCard);
     }
-    public CreditCard getCreditCard(int number) {
+    public CreditCard getCreditCard(long number) {
         return creditCards.get(number);
     }
     public void removeCreditCard(int number) {

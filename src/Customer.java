@@ -10,9 +10,9 @@ public class Customer {
     private int ID;
     private String name;
     private String address;
-    private int phoneNumber;
+    private long phoneNumber;
 
-    public Customer(int SSN, int ID, String name, String address, int phoneNumber) {
+    public Customer(int SSN, int ID, String name, String address, long phoneNumber) {
         this.SSN = SSN;
         this.ID = ID;
         this.name = name;
@@ -31,7 +31,7 @@ public class Customer {
     public String getAddress() {
         return address;
     }
-    public int getPhoneNumber() {
+    public long getPhoneNumber() {
         return phoneNumber;
     }
     public void setSSN(int SSN) {
@@ -50,4 +50,7 @@ public class Customer {
         this.phoneNumber = phoneNumber;
     }
 
+    public String toString(){
+        return "SSN: " + this.SSN + "\nID: " + this.ID + "\nName: " + this.name + "\nAddress: " + this.address + "\nPhone Number: " + this.phoneNumber;
+    }
 }

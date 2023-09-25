@@ -14,14 +14,14 @@ public class CreditCard {
         * Balance
         * Active
      */
-    private int number;
+    private long number;
     private CreditCardType type;
     private int limit;
     private float balance;
     private boolean active;
 
 
-    public CreditCard(int number, String type, int limit, float balance, boolean active) {
+    public CreditCard(long number, String type, int limit, float balance, boolean active) {
         this.number = number;
         this.type = CreditCardType.valueOf(type);
         this.limit = limit;
@@ -29,7 +29,7 @@ public class CreditCard {
         this.active = active;
 
     }
-    public int getNumber() {
+    public long getNumber() {
         return number;
     }
     public String getType() {

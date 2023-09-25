@@ -15,4 +15,13 @@ public class TransactionCollection {
         return this.transactions;
     }
 
+    public Transaction[] getTransactions(long number, String startDate, String endDate) {
+        HashSet<Transaction> transactions = new HashSet<Transaction>();
+        for (Transaction transaction : this.transactions){
+            if (transaction.getCreditCardNumber() == number && transaction.getDate().compareTo(startDate) >= 0 && transaction.getDate().compareTo(endDate) <= 0){
+                transactions.add(transaction);
+            }
+        }
+        return transactions.toArray(new Transaction[transactions.size()]);
+    }
 }

@@ -39,6 +39,59 @@ public class Main {
             if (firstLetter == 'q'){
                 // Queries!
                 System.out.println("Queries Menu:");
+                System.out.println("1. Get all customers.");
+                System.out.println("2. Locate Customer by ID or SSN.");
+                System.out.println("3. Get Credit Card Info.");
+                System.out.println("4. Get Credit Card Transactions.");
+
+                // Get the query
+                int query = scanner.nextInt();
+                switch (query){
+                    case(1):{
+                    System.out.println(customers);
+                        break;
+                    }
+                    case(2):{
+                        // Prompt for ID or SSN
+                        System.out.println("Search by ID (1) or SSN? (2)?");
+                        int search = scanner.nextInt();
+                        if (search == 1){
+                            // Search by ID
+                            System.out.println("Enter ID:");
+                            int ID = scanner.nextInt();
+                            System.out.println(customers.getCustomer(ID));
+                        } else if (search == 2){
+                            // Search by SSN
+                            System.out.println("Enter SSN:");
+                            int SSN = scanner.nextInt();
+                            System.out.println(customers.getCustomerBySSN(SSN));
+                        } else {
+                            System.out.println("Invalid input, try again");
+                        }
+                    } // Locate Customer by ID or SSN
+                    case(3):{
+                        System.out.println("Enter credit card number:");
+                        long number = scanner.nextLong();
+                        System.out.println(creditCards.getCreditCard(number));
+                    } // Get Credit Card Info
+                    case(4):{
+                        // Get the credit card number
+                        System.out.println("Enter credit card number:");
+                        long number = scanner.nextLong();
+                        // Start Date
+                        System.out.println("Enter start date:");
+                        String startDate = scanner.nextLine();
+                        // End Date
+                        System.out.println("Enter end date:");
+                        String endDate = scanner.nextLine();
+                        // Get All Transactions which match the filters
+                        Transaction[] transactions1 = transactions.getTransactions(number, startDate, endDate);
+                        // Print the transactions
+                        for (Transaction transaction : transactions1){
+                            System.out.println(transaction);
+                        }
+                    } // Get Credit Card Transactions
+                }
             } else if (firstLetter == 'c'){
                 // Commands!
                 System.out.println("Commands Menu:");
@@ -61,11 +114,13 @@ public class Main {
                         System.out.println("Enter ID:");
                         int ID = scanner.nextInt();
                         System.out.println("Enter name:");
+                        // Clear the buffer
+                        scanner.nextLine();
                         String name = scanner.nextLine();
                         System.out.println("Enter address:");
                         String address = scanner.nextLine();
                         System.out.println("Enter phone number:");
-                        int phoneNumber = scanner.nextInt();
+                        long phoneNumber = scanner.nextLong();
                         // Create the customer
                         Customer customer = new Customer(SSN, ID, name, address, phoneNumber);
                         // Add the customer to the collection
@@ -76,8 +131,10 @@ public class Main {
                     case (2):{
                         // Collect the data
                         System.out.println("Enter credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         System.out.println("Enter credit card type:");
+                        // Clear the buffer
+                        scanner.nextLine();
                         String type = scanner.nextLine();
                         System.out.println("Enter credit card limit:");
                         int limit = scanner.nextInt();
@@ -93,7 +150,7 @@ public class Main {
                     case (3):{
                         // Collect the data
                         System.out.println("Enter credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         // Get the Customer ID
                         System.out.println("Enter customer ID:");
                         int ID = scanner.nextInt();
@@ -109,7 +166,7 @@ public class Main {
                     case (4):{
                         // Collect the data
                         System.out.println("Enter credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         // Cancel the credit card
                         creditCards.getCreditCard(number).setActive(false);
 
@@ -117,7 +174,7 @@ public class Main {
                     case (5):{
                         // Collect the data
                         System.out.println("Enter credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         // Activate the credit card
                         creditCards.getCreditCard(number).setActive(true);
 
@@ -127,6 +184,7 @@ public class Main {
                         System.out.println("Enter vendor name:");
                         String name = scanner.nextLine();
                         System.out.println("Enter vendor address:");
+                        // Clear the buffer
                         String address = scanner.nextLine();
                         System.out.println("Enter vendor ID:");
                         int ID = scanner.nextInt();
@@ -147,7 +205,7 @@ public class Main {
                         System.out.println("Enter transaction vendor:");
                         String vendor = scanner.nextLine();
                         System.out.println("Enter transaction credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         System.out.println("Enter transaction customer ID:");
                         int customerID = scanner.nextInt();
                         // Create the transaction
@@ -166,11 +224,11 @@ public class Main {
                         System.out.println("Enter payment date:");
                         String date = scanner.nextLine();
                         System.out.println("Enter payment credit card number:");
-                        int number = scanner.nextInt();
+                        long number = scanner.nextLong();
                         System.out.println("Enter payment customer ID:");
                         int customerID = scanner.nextInt();
                         // Create the payment
-                        Payment payment = new Payment(ID, amount, date, number, customerID);
+                        Payment payment = new Payment(ID, amount, date, number);
                         // Add the payment to the collection
                         payments.addPayment(payment);
 

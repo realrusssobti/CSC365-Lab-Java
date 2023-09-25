@@ -8,8 +8,8 @@ public class Payment {
     private int customerID;
     private double amount;
     private String date;
-    private int creditCardNumber;
-    public Payment(int customerID, double amount, String date, int creditCardNumber) {
+    private long creditCardNumber;
+    public Payment(int customerID, double amount, String date, long creditCardNumber) {
         this.customerID = customerID;
         this.amount = amount;
         this.date = date;
@@ -24,7 +24,7 @@ public class Payment {
     public String getDate() {
         return date;
     }
-    public int getCreditCardNumber() {
+    public long getCreditCardNumber() {
         return creditCardNumber;
     }
     public void setCustomerID(int customerID) {
