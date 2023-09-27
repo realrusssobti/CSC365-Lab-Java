@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 enum CreditCardType {
     VISA,
     MASTERCARD,
@@ -23,7 +21,7 @@ public class CreditCard {
 
     public CreditCard(long number, String type, int limit, float balance, boolean active) {
         this.number = number;
-        this.type = CreditCardType.valueOf(type);
+        this.type = CreditCardType.valueOf(type.toUpperCase());
         this.limit = limit;
         this.balance = balance;
         this.active = active;

@@ -12,9 +12,10 @@ public class Transaction {
     private long creditCardNumber;
     private String vendor;
     public Transaction(int customerID, double amount, String date, long creditCardNumber, String vendor) {
+
         this.customerID = customerID;
         this.amount = amount;
-        this.date = date;
+        this.date = date.replaceAll("[^\\d]", "");
         this.creditCardNumber = creditCardNumber;
         this.vendor = vendor;
     }
